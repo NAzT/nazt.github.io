@@ -1,0 +1,662 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[My Octopress Blog]]></title>
+  <link href="http://NAzT.github.com/atom.xml" rel="self"/>
+  <link href="http://NAzT.github.com/"/>
+  <updated>2012-12-11T20:07:30+07:00</updated>
+  <id>http://NAzT.github.com/</id>
+  <author>
+    <name><![CDATA[Your Name]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[When we are in the flow]]></title>
+    <link href="http://NAzT.github.com/blog/2012/12/11/when-we-are-in-flow/"/>
+    <updated>2012-12-11T00:00:00+07:00</updated>
+    <id>http://NAzT.github.com/blog/2012/12/11/when-we-are-in-flow</id>
+    <content type="html"><![CDATA[<p>Intensely focused on an activity of our own choosing, that is neither under-challenging nor over-challenging that has a clear objective and that receive immediate feedback.</p>
+
+<p>from. Decision Books</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[British Accent vs American Accent]]></title>
+    <link href="http://NAzT.github.com/blog/2012/12/10/british-accent-vs-american-accent/"/>
+    <updated>2012-12-10T00:00:00+07:00</updated>
+    <id>http://NAzT.github.com/blog/2012/12/10/british-accent-vs-american-accent</id>
+    <content type="html"><![CDATA[<p>สองอันนี้ออกเสียงชัดมากกก  มากจนต้อง Note เอาไว้</p>
+
+<ul>
+  <li>American English Accent</li>
+</ul>
+
+<iframe width="560" height="315" src="http://www.youtube.com/embed/YX_OxBfsvbk" frameborder="0"></iframe>
+
+<ul>
+  <li>British English Accent</li>
+</ul>
+
+<audio>
+  <source src="http://www.englishspeakingonline.com/podcast-audio/Episode1.mp3" type="audio/mpeg" />
+Your browser does not support the audio element.
+</audio>
+
+<h2 id="ref">Ref.</h2>
+
+<ul>
+  <li><a href="http://www.englishspeakingonline.com/podcasts/">Learn English Podcast</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/American_and_British_English_pronunciation_differences">http://en.wikipedia.org/wiki/American_and_British_English_pronunciation_differences</a></li>
+</ul>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[สั่ง By Word ขึ้นมาทำงานพร้อม Template และชื่อ File จาก Rake Task]]></title>
+    <link href="http://NAzT.github.com/blog/2012/12/10/blogging-using-byword-controlled-by-rake/"/>
+    <updated>2012-12-10T00:00:00+07:00</updated>
+    <id>http://NAzT.github.com/blog/2012/12/10/blogging-using-byword-controlled-by-rake</id>
+    <content type="html"><![CDATA[<p>สั่ง By Word ขึ้นมาทำงานพร้อม Template และชื่อ File จาก Rake Task ทำด้วย Code <a href="https://gist.github.com/4246906">หน้าตาแบบนี้</a></p>
+
+<pre><code>require 'rubygems'
+require 'optparse'
+require 'yaml'
+
+desc 'create a new draft post'
+task :np do
+  OptionParser.new.parse!
+  ARGV.shift
+  title = ARGV.join(' ')
+
+  path = "_posts/#{Date.today}-#{title.downcase.gsub(/[^[:alnum:]]+/, '-')}.md"
+
+  if File.exist?(path)
+    puts "[WARN] File exists - skipping create"
+  else
+    File.open(path, "w") do |file|
+      file.puts YAML.dump({'layout' =&gt; 'post', 'published' =&gt; false, 'title' =&gt; title})
+      file.puts "---"
+    end
+  end
+  `osascript ./applescript/open-byword.scpt #{Dir.pwd}/#{path}`
+
+  exit 1
+end
+</code></pre>
+
+<p>open-byword.scpt <a href="https://github.com/NAzT/nazt.github.com/blob/afe654eb5b676588658e16c021db6df9edbda0cf/applescript/open-byword.scpt">อยู่ที่นี่</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[เรียนลัดการเขียน Google Chrome Extension]]></title>
+    <link href="http://NAzT.github.com/blog/2011/05/29/touch-google-chrome-extension-first-time/"/>
+    <updated>2011-05-29T00:00:00+07:00</updated>
+    <id>http://NAzT.github.com/blog/2011/05/29/touch-google-chrome-extension-first-time</id>
+    <content type="html"><![CDATA[<p>Google Chrome Extension เขียนง่ายกว่าที่คิด</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[เรียนลัดการเขียน Google Chrome Extension]]></title>
+    <link href="http://NAzT.github.com/blog/2011/05/29/javascript-closure-private-scope/"/>
+    <updated>2011-05-29T00:00:00+07:00</updated>
+    <id>http://NAzT.github.com/blog/2011/05/29/javascript-closure-private-scope</id>
+    <content type="html"><![CDATA[<p>Google Chrome Extension เขียนง่ายกว่าที่คิด</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[functional programming first look]]></title>
+    <link href="http://NAzT.github.com/blog/2011/05/12/functional-programming-first-look/"/>
+    <updated>2011-05-12T00:00:00+07:00</updated>
+    <id>http://NAzT.github.com/blog/2011/05/12/functional-programming-first-look</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Javascript scope ตอนที่ 2 [object, this, window, var]]]></title>
+    <link href="http://NAzT.github.com/blog/2011/05/10/javascript-scope-object-this/"/>
+    <updated>2011-05-10T00:00:00+07:00</updated>
+    <id>http://NAzT.github.com/blog/2011/05/10/javascript-scope-object-this</id>
+    <content type="html"><![CDATA[<p>วันนี้มาว่ากันเรื่อง scope แบบดู code เอง แล้วก็สงสัยเองครับ</p>
+
+<p>ผมมี code javascript มาให้ 4 ชุด ลองทาย output กันดูนะครับว่าได้อะไรบ้าง (พร้อมเหตุผลว่าทำไมถึงเป็นเช่นนั้น)</p>
+
+<h3 id="code--1">Code ชุดที่ 1</h3>
+
+<script src="https://gist.github.com/964305.js?file=single.function.this.name.js"></script>
+
+<h3 id="code--2">Code ชุดที่ 2</h3>
+
+<script src="https://gist.github.com/964306.js?file=single.function.name.instead.this.name.js"></script>
+
+<h3 id="code--3">Code ชุดที่ 3</h3>
+
+<script src="https://gist.github.com/964320.js?file=object.function.this.name.js"></script>
+
+<h3 id="code--4">Code ชุดที่ 4</h3>
+<script src="https://gist.github.com/964312.js?file=object.function.name.instead.of.this.name.js"></script>
+
+<h3 id="section">เฉลย:</h3>
+
+<ol>
+  <li>hello window</li>
+  <li>hello inside</li>
+  <li>hello window</li>
+  <li>hello object</li>
+</ol>
+
+<h3 id="section-1">ข้อมูลเพิ่มเติม</h3>
+<ul>
+  <li>typeof window</li>
+  <li>typeof this</li>
+  <li>console.log(this===window &amp;&amp; ‘this===window’)</li>
+</ul>
+
+<p>discuss กันที่กล่อง comment นะครับ :)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[ตัดคำภาษาไทยด้วย javascript [ตัดคำทาง service]]]></title>
+    <link href="http://NAzT.github.com/blog/2011/05/07/thai-language-tokenizer-using-lexto/"/>
+    <updated>2011-05-07T00:00:00+07:00</updated>
+    <id>http://NAzT.github.com/blog/2011/05/07/thai-language-tokenizer-using-lexto</id>
+    <content type="html"><![CDATA[<h2 id="service-">Service ตัดคำภาษาไทย</h2>
+
+<p>มีให้บริการสองแบบคือ</p>
+
+<ul>
+  <li>JSON</li>
+  <li>JSONP</li>
+</ul>
+
+<h3 id="json-output">วิธีการใช้งาน (json output)</h3>
+
+<p>ให้ request ไปที่ <a href="http://atnnazt.appspot.com/tokenizer/index?word=ข้อความที่ต้องการตัด">atnnazt.appspot.com/tokenizer/index?word=ข้อความที่ต้องการตัด</a></p>
+
+<p>แต่ถ้าต้องการเรียกใช้งานผ่าน javascript ก็ต้องใช้ jsonp ให้ส่ง callback ไปด้วย</p>
+
+<h3 id="jsonp-output">วิธีการใช้งาน (jsonp output)</h3>
+
+<p>ระบุ parameter [&amp;callback=your_callback] มาด้วย</p>
+
+<p><a href="http://atnnazt.appspot.com/tokenizer/index?word=ข้อความที่ต้องการตัด&amp;callback=your_callback">http://atnnazt.appspot.com/tokenizer/index?word=ข้อความที่ต้องการตัด&amp;callback=your_callback</a></p>
+
+<h3 id="output-json-object">Output (JSON Object)</h3>
+<p><img src="https://img.skitch.com/20110508-e6bfrg4epga51rf9sbpynt5qy6.jpg" alt="tokenizer" /></p>
+
+<ul>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>text = คำที่ถูกตัด คั่นด้วย</td>
+          <td>=&gt; เช่น “</td>
+          <td>สวัสดี</td>
+          <td>ครับ</td>
+          <td>พี่น้อง</td>
+          <td>”</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>list = JSON array ของคำที่ตัดแล้ว =&gt;[“สวัสดี”, “ครับ”, “พี่น้อง”]</li>
+  <li>position = JSON array ของตำแหน่งของอักระที่ถูกตัด =&gt; [6, 10, 17]</li>
+</ul>
+
+<p>code ตัวอย่าง [jQuery.getJSON]</p>
+
+<pre><code>jQuery.getJSON('http://atnnazt.appspot.com/tokenizer/index?word=สวัสดีครับพี่น้อง&amp;callback=?',
+  function(tokenized) {
+    console.log(tokenized, tokenized.text, tokenized.list, tokenized.position);
+  });
+</code></pre>
+
+<p>Code ตัวอย่างใน firebug</p>
+
+<p><img src="https://img.skitch.com/20110508-eytitg75t7bc7bpxssb9rh4c98.medium.jpg" alt="jQuery getJSON" /></p>
+
+<h3 id="section">เบื้องหลังการตัดคำ</h3>
+
+<p>ใช้ LexTo ตัดคำ ซึ่งเป็นการตัดคำแบบ dictionary based ทำงานบน google app engine เป็นเว็บด้วย grails</p>
+
+<p>ซึ่งเปิดเผย source code ด้วย [แต่กากมาก] ทำแค่รันได้ (มันแก้ไขมาน่ะ) เชิญที่ <a href="https://github.com/NAzT/Thai-Language-Tokenizer-on-grails-appengine">github</a></p>
+
+<p>ตัดคำตามพจนานุกรม <a href="https://github.com/NAzT/ATN-GAE/blob/master/lexitron.txt">lexitron</a></p>
+
+<p>เรื่องการตัดคำสามารถหาอ่านได้ในตอนเก่าๆ tag LexTo, ตัดคำภาษาไทย</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Blogging on github]]></title>
+    <link href="http://NAzT.github.com/blog/2011/05/01/bloging-on-github/"/>
+    <updated>2011-05-01T00:00:00+07:00</updated>
+    <id>http://NAzT.github.com/blog/2011/05/01/bloging-on-github</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[validate facebook layout]]></title>
+    <link href="http://NAzT.github.com/blog/2011/04/30/validate-facebook-session/"/>
+    <updated>2011-04-30T00:00:00+07:00</updated>
+    <id>http://NAzT.github.com/blog/2011/04/30/validate-facebook-session</id>
+    <content type="html"><![CDATA[<pre><code>function validate_facebook_session($args, $app_secret) {
+  $payload = '';
+  ksort($args);
+  foreach ($args as $key =&gt; $value) {
+    if ($key != 'sig') {
+      $payload .= $key . '=' . $value;
+    }
+  }
+  $hash_in = $payload . $app_secret;
+  $sig = $args['sig'];
+  if (md5($hash_in) != $sig) {
+    return null;
+  }
+  return $args;
+}
+</code></pre>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Something about my mind]]></title>
+    <link href="http://NAzT.github.com/blog/2011/04/30/something-about-my-mind/"/>
+    <updated>2011-04-30T00:00:00+07:00</updated>
+    <id>http://NAzT.github.com/blog/2011/04/30/something-about-my-mind</id>
+    <content type="html"><![CDATA[<p>อยู่ๆก็รู้สึกว่า เราเป็นคนที่กลัวอดีตหรือนี่…</p>
+
+<p>ถ้าผมกำลังวิ่งหนีอดีต …  แล้วผมจะวิ่งไปหาอะไร ไปเจออะไร?ิิิ</p>
+
+<p>กำลังดู Blueberry pie</p>
+
+<p>2:25 am</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[วากันเรื่อง Scope ใน Javascript ตอนที่ 1]]></title>
+    <link href="http://NAzT.github.com/blog/2011/04/29/javascript-scope-for-fun-part-1/"/>
+    <updated>2011-04-29T00:00:00+07:00</updated>
+    <id>http://NAzT.github.com/blog/2011/04/29/javascript-scope-for-fun-part-1</id>
+    <content type="html"><![CDATA[<p>Blog ตอนนี้แบ่งเป็น 2 Part คือ Javascript และ ภาษา C</p>
+
+<p>ตอนแรกกะเขียนตอนเดียวจบแต่มันยาวแหละหนักเลยขอเรียกตอนนี้่ว่าตอนที่  1 แล้วกัน</p>
+
+<p>เริ่มเลยแล้วกันเนอะ….</p>
+
+<h1 id="part--javascript">Part: ภาษา javascript</h1>
+<p>##Scopeใน javascript</p>
+
+<pre><code>var scope = "global"
+function f() {
+  alert(scope);
+  var scope  = "local";
+  alert(scope);
+}
+</code></pre>
+
+<p>จาก code มี alert สองครั้ง  ลองเดาหน่อยไม๊ว่า output จะได้อะไรบ้าง?</p>
+
+<script type="text/javascript" charset="utf-8">
+  var scope = "global"
+  function f() {
+    alert(scope);
+    var scope  = "local";
+    alert(scope);
+  }
+</script>
+
+<p><a href="#" onclick="f(); return false;">กดดูคำตอบ</a></p>
+
+<p>บางคนอาจจะสงสัยว่าเอ๊ะ ยังไงกันนะ</p>
+
+<p>มันควรจะได้ <code>global แล้ว ค่อย local</code> สิ แต่ทำไมมันดันได้ <code>undefine และ local</code> ล่ะ?</p>
+
+<p>ลองดู code javascript ล่าง ซึ่งมันสมมูลกับ code ตัวอย่างข้างบนครับ</p>
+
+<pre><code>function f() {
+  var scope;
+  alert(scope);
+  scope = "local";
+  alert(scope);
+}
+</code></pre>
+
+<h2 id="section">ทำไม ทำไม ทำไม????</h2>
+<p>ในภาษา javascript ถ้ามีการประกาศตัวแปรไว้ในฟังก์ชั่นไม่ว่าจะประกาศตรงไหนของฟังก์ชั่นแล้วเผอิญใช้ชื่อซ้ำกับตัวแปรที่มีซ้ำกับ scope ที่อยู่นอกกว่า scope นอกจะโดนซ่อนทันที เพราะ javascript จะหาก่อนว่ามีตัวแปรในสโคปนั้นไม๊ แล้วค่อยเอาค่าออกมาใช้ดัง flowchart ข้างล่าง</p>
+
+<p><img src="https://img.skitch.com/20110501-i7rji6pbn6cg1x5cuib3jhju6.medium.jpg" alt="Scope Chaind and variable resolution" /></p>
+
+<p>จบส่วนของ javascript ครับ  ใครเคยเขียนภาษาตระกูล C มาคงงงเล็กน้อยว่า อ้าว… ไหงงั้นล่ะ? ถ้าสนใจลองอ่านต่อใน Part ภาษา C ได้ครับ</p>
+
+<h1 id="part--c--scope">Part: ภาษา C ที่ต่างกันในเรื่องของ Scope</h1>
+<p>##Scope ในภาษา C</p>
+
+<p>c code:
+      /* Block 1 */
+      int c = 3;
+      {
+        int c = 4;
+      }
+      printf (“c :1 = %d \n”, c);</p>
+
+<pre><code>  /* Block 2 */
+  {
+    printf ("inner c :1.5  = %d \n", c);
+    c = 8;
+    int c = 5;
+  }
+  printf ("c :2 = %d \n", c);
+</code></pre>
+
+<p>compile &amp; run
+  $ gcc scope.c ; ./a.out</p>
+
+<pre><code>/* output */
+c :1 = 3
+inner c :1.5  = 3
+c :2 = 8
+</code></pre>
+
+<p>ใครเคยเขียนภาษา C ก็น่าจะตอบได้อย่างมั่นใจเลยว่า <code>c :1 =&gt; 3</code> ที่ไม่เป็น 4 ก็เพราะการกำหนด <code>int c = 4;</code> เป็นการสร้างตัวแปรใหม่ ดังนั้นตัวแปร c ที่เกิดขึ้นมาใหม่นั้นจึงมีชีวิตอยู่แค่ใน block <code>{ }</code> จบ block 1 ตัวแปร c (ที่เกิดขึ้นใน block 1) ก็ตายไป</p>
+
+<p>ส่วน <code>inner c :1.5</code> ได้ 3 ก็เพราะว่า ใช้้ค่า c จาก <code>scope main</code> ไปก่อน เพราะว่ายังไม่มีการสร้างตัวแปรใหม่</p>
+
+<p>ส่วน <code>c :2 = 8</code> เป็นเพราะ c ถูก set ตอน scope ยังเป็นของ main อยู่ (ยังไม่เกิดตัวแปรใหม่ใน block) ส่วน <code>int c = 5;</code> ก็ตายไปหลังจบ Block 2 <code>c :2</code> จึงได้ค่า <code>8</code> มา</p>
+
+<p>จบแล้วครับ  เหนื่อยเลยทีเดียว</p>
+
+<p>โชคดีครับ</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[ท่าพิเศษสำหรับ operator && และ operator || ใน javascript (Short-circuit evaluation)]]></title>
+    <link href="http://NAzT.github.com/blog/2011/04/28/short-circuit-in-javascript/"/>
+    <updated>2011-04-28T00:00:00+07:00</updated>
+    <id>http://NAzT.github.com/blog/2011/04/28/short-circuit-in-javascript</id>
+    <content type="html"><![CDATA[<h2 id="operator---operator---javascript-short-circuit-evaluation">ท่าพิเศษสำหรับ operator &amp;&amp; และ operator || ใน javascript (Short-circuit evaluation)</h2>
+
+<table>
+  <tbody>
+    <tr>
+      <td>ปกติแล้วเรามอง &amp;&amp; และ</td>
+      <td> </td>
+      <td>ว่าเป็นตัวดำเนินการทางด้านตรรกะ (logical operator) เอาไว้ตรวจสอบเงื่อนไขก่อนเข้า if/while ว่าจริง หรือ ไม่จริง <code>operator || และ &amp;&amp; เป็น Short-circuit operator ภาษา javascript จะ return LastValue ของการประมวลผลมาให้ด้วย</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="return--operator---operator---javascript">การ Return ค่าของ operator &amp;&amp; และ operator || ใน javascript</h2>
+
+<h3 id="operator---return-">* operator &amp;&amp; จะ <code>return ตัวหลัง</code>ถ้าตัวแรกเป็นจริง</h3>
+<p>เช่น</p>
+
+<pre><code>console.log(true &amp;&amp; 'Hello Javascript');
+</code></pre>
+
+<p>โค้ดข้างบนจะแสดงข้อความข้อความ <code>Hello Javascript</code> เพราะ ค่าสุดท้ายของการประมวลผลคือ <code>Hello Javascript</code></p>
+
+<h3 id="operator--return--false">* operator || จะ<code>return ตัวหลัง</code>ถ้าตัวแรกเป็น false</h3>
+
+<p>เช่น</p>
+
+<pre><code>console.log(false || 'Hello Javascript');
+</code></pre>
+
+<p>จะได้ <code>Hello Javascript</code> เพราะค่าสุดท้ายของการประมวลผลคือ <code>Hello Javascript</code> เหมือนกัน</p>
+
+<hr />
+<p>##ข้อควรระวัง
+    var a = 0;
+    a++; ++a;
+    console.log(false &amp;&amp; ++a);
+    console.log(true || ++a);
+    console.log(a);
+code ข้างต้นจะไม่ทำ ++a เลย เพราะมี Short-circuit evaluation (ค่าสุดท้ายคือ fasle เพราะว่า false AND กับอะไรก็ได้ false เลยไม่ต้องคำนวณต่อ เนี่ยแหละกระบวนการ Short-circuit)</p>
+
+<hr />
+
+<h2 id="operator---operator--">การนำ operator &amp;&amp; และ operator || ไปใช้</h2>
+
+<h3 id="operator-">operator &amp;&amp;</h3>
+<pre><code>var name = person &amp;&amp; person.getName(); code ข้างบน จะเหมือนกับ
+
+if(person) {
+  var name = person.getName();
+}
+/* ส่วนใหญ่จะใช้กับการตรวจสอบ object ว่ามีจริงไหม แล้วค่อยดึงค่าออกมาใช้ */
+</code></pre>
+
+<h3 id="operator--1">operator ||</h3>
+<pre><code>var name = persons_name || "John Doe"; code ข้างบน จะเหมือนกับ
+
+if(persons_name) {
+  var name = persons_name;
+} else {
+  var name = "John Doe";
+}
+/* ส่วนใหญ่จะใช้กับการ set ค่า default */
+</code></pre>
+
+<p>กระบวนการ Short-circuit evaluation มีอยู่ในหลายภาษาซึ่งแต่ละภาษา return ค่าหลังจากประมวลผลต่างกัน</p>
+
+<h2 id="short-circuit-operators-">Short circuit operators ในภาษาต่างๆ</h2>
+<p><a href="http://en.wikipedia.org/wiki/Short-circuit_evaluation"><img src="https://img.skitch.com/20110501-tk3j1t8sd32pm9m58a4dqbns21.medium.jpg" alt="Short Circuit-Evaluation" /></a></p>
+
+<h4 id="section">แหล่งข้อมูลอ้างอิง/เพิ่มเติม</h4>
+<ul>
+  <li><a href="http://www.openjs.com/articles/syntax/short_circuit_operators.php">โค้ดตัวอย่างจากต้นฉบับ</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Short-circuit_evaluation">Circuit-Evaluation</a></li>
+</ul>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[ดาวน์โหลด youtube vdo แบบ geek (นิดๆ) &#8211;python]]></title>
+    <link href="http://NAzT.github.com/blog/2011/04/07/youtube-dl/"/>
+    <updated>2011-04-07T00:00:00+07:00</updated>
+    <id>http://NAzT.github.com/blog/2011/04/07/youtube-dl</id>
+    <content type="html"><![CDATA[<h2 id="section">วันนี้ยังไง?</h2>
+<p>เราจะมา download youtube vdo ด้วยคำสั่ง (command line) กันครับ
+คำสั่งที่เราจะใช้ก็คือ youtube-dl ซึ่งก็ตรงๆตัว ครับ</p>
+<blockquote>youtube-dl is a small command-line program to download videos from YouTube.com </blockquote>
+<!--more-->
+<p>##มันเป็น Python!
+<img src="https://img.skitch.com/20110407-dhjrjb8p1ab3qfb5i6621d54k.medium.jpg" alt="youtube-dl" /></p>
+
+<h2 id="section-1">การใช้งาน</h2>
+<p><img src="https://img.skitch.com/20110407-j4d7kpkdphcf8i8jp7j32iebhk.medium.jpg" alt="how-to-use" /></p>
+
+<h2 id="options-">Options เพียบ</h2>
+<p><img src="https://img.skitch.com/20110407-q9hjcj87enqbub2mfnr9uahk3y.jpg" alt="youtube-dl --help" /></p>
+
+<h2 id="mac-osx--homebrew">วิธีการติดตั้ง (mac osx, ลงผ่าน homebrew)</h2>
+<p><img src="https://img.skitch.com/20110407-pdu7a4m7bjmhuc82tm8bcswbye.medium.jpg" alt="brew install youtube-dl" /></p>
+
+<h2 id="section-2">วิธีติดตั้งอื่นๆ</h2>
+<p>###<a href="http://rg3.github.com/youtube-dl/download.html">Download ได้ที่ต้นสังกัด</a></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[ดูกล้อง CCTV ทั่วกรุงเทพใน Facebook (Page) ได้แล้วจร้าาา]]></title>
+    <link href="http://NAzT.github.com/blog/2011/03/25/cctv-in-facebook-page/"/>
+    <updated>2011-03-25T00:00:00+07:00</updated>
+    <id>http://NAzT.github.com/blog/2011/03/25/cctv-in-facebook-page</id>
+    <content type="html"><![CDATA[<h2 id="cctv--facebook-page-">ดูกล้อง CCTV ทั่วกรุงเทพใน Facebook (Page) ได้แล้วจร้าาา</h2>
+<!--more-->
+<p>### เอาล่ะ ต้องการดู อยู่หนใด ?</p>
+
+<ul>
+  <li>
+    <p>ขั้นแรก เข้าไปที่  <a href="http://www.facebook.com/together.in.th">facebook page:</a> และหา Bangkok CCTV (ดังภาพข้างล่าง)
+<a href="http://www.facebook.com/together.in.th"><img src="http://img.skitch.com/20110325-gpp5gsfytnbg9us7ujfgesw3wa.medium.jpg" alt="CCTV ON FB PAGE NAzT's Blog" /></a></p>
+  </li>
+  <li>
+    <p>หรือจะต่อตรงไปยังหน้าที่ดูกล้อง CCTV ได้เลย ทางลิ้งนี้ =&gt; [http://www.facebook.com/together.in.th?sk=app<em>203158633036737](http://www.facebook.com/together.in.th?sk=app</em>203158633036737)
+<a href="http://www.facebook.com/together.in.th"><img src="http://img.skitch.com/20110325-mf1pc88x6jiukihbm1jxign93f.medium.jpg" alt="CCTV ON FB PAGE NAzT's Blog" /></a></p>
+  </li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[มาดูป้ายจราจรอัจฉริยะทั่วกรุงเทพและลองใช้ API ดึงข้อมูลกันดีกว่า]]></title>
+    <link href="http://NAzT.github.com/blog/2011/02/24/bangkok-vms-with-api/"/>
+    <updated>2011-02-24T00:00:00+07:00</updated>
+    <id>http://NAzT.github.com/blog/2011/02/24/bangkok-vms-with-api</id>
+    <content type="html"><![CDATA[<p>วันนี้ขี้เกียจอธิบายครับ ดูภาพน่าจะเข้าใจเลย  source code อยู่ด้านล่างครับ
+<!--more--></p>
+
+<p>[RAW]
+  &lt;div class=&#8217;vms-jsonp-example&#8217;&gt;
+  &lt;button type=&#8217;button&#8217; id=&#8217;show-vms-button&#8217;&gt;reload ป้ายจราจรอัจฉริยะ&lt;/button&gt;
+  &lt;div class=&#8217;vms-jsonp-example-output&#8217;&gt;&lt;/div&gt;
+&lt;/div&gt;</p>
+
+<script type="text/javascript">
+
+  var service_endpoint = "http://www.together.in.th/drupal";
+
+  $(function() {
+    display_vms();
+  });
+
+  $('#show-vms-button').click(function(e) {
+    $('.vms-jsonp-example-output').children().remove();
+    display_vms();
+  });
+
+  function display_vms() {
+    var loading = $("<div class='loading-vms'>Loading...</div>");
+
+    $('.vms-jsonp-example-output').append(loading);
+
+    $.getJSON(service_endpoint+ '/traffy/wrapper/getvms/?format=js&call=?&header=js', function(res) {
+      $.each(res, function(k, v) {
+        $('.vms-jsonp-example-output').append(vms_layout(k, v.name_th, v.pstop));
+      });
+      $(".vms-wrapper:nth-child(odd)").addClass("odd");
+      $(loading).remove();
+    });
+  }
+
+  function vms_layout(cid, name, congestion) {
+    var wrapper = $("<div class='vms-wrapper' />");
+    var info = $("<div class='vms-info' />");
+
+    var vms_image_src = service_endpoint + "/traffy/wrapper/getvmsimg?header=png&format=png&id=" + cid;
+    var vms_image = $("<img alt='vms-image' />").attr('src', vms_image_src);
+
+    var name = $("<span class='vms-name' />").html(name);
+    var congestion_level = $("<span class='vms-congestion-level' />").html("ระดับความติดขัด " + congestion + "%");
+
+    info.append(name).append(congestion_level);
+    wrapper.append(info).append(vms_image);
+
+    return wrapper;
+  }
+</script>
+
+<style type="text/css">
+    .vms-wrapper {
+       width: 270px;
+       background: #FFEFEF;
+       float: left;
+       padding-bottom: 20px;
+       margin: 2px;
+     }
+    .odd {
+      background: #FFEFCF;
+    }
+   .vms-congestion-level {
+      margin-left: 10px;
+    }
+   .loading {
+      padding: 20px
+    }
+</style>
+
+<div style="clear:both"></div>
+<p>[/RAW]</p>
+
+<h2 id="code">CODE</h2>
+<script src="https://gist.github.com/841848.js?file=get.traffy.vms.html"></script>
+
+<h2 id="section">ภาพตัวอย่าง</h2>
+
+<div class="thumbnail"><a href="https://skitch.com/nazt/rtukj/vms-using-traffy-api-wrapper"><img style="max-width:638px" src="https://img.skitch.com/20110224-gu516x2twdfgyu6wx78rnd6uy3.medium.jpg" alt="vms-using-traffy-api-wrapper" /></a><br /></div>
+
+<h3 id="section-1">ปล.</h3>
+
+<ul>
+  <li>มี cache 5 นาทีด้วยครับ</li>
+  <li>คำอธิบายอื่นๆ ดูที่เรื่องที่เกี่ยวข้องนะจ๊ะ</li>
+  <li>การใช้ api แบบละเอียดหน่อยจะอยู่ที่ blog ตอน <a href="http://www.together.in.th/traffy-api-wrapper-%E0%B8%94%E0%B9%89%E0%B8%A7%E0%B8%A2-drupal7/">Traffy API Wrapper</a> นะครับ</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[ทำ cache ให้ Traffy API [Proxy/Wrapper] แล้วจ้า (Drupal7)]]></title>
+    <link href="http://NAzT.github.com/blog/2011/02/23/traffy-api-wrapper-cache-on-drupal7/"/>
+    <updated>2011-02-23T00:00:00+07:00</updated>
+    <id>http://NAzT.github.com/blog/2011/02/23/traffy-api-wrapper-cache-on-drupal7</id>
+    <content type="html"><![CDATA[<p>ผลจากการทำ cache ทำให้เวลาในการเรียกใช้ api getcctvimg เฉลี่ยอยู่ที่ประมาณ 2.53  วินาที [มาจาก 2.58 2.77 2.52 2.28]
+<!--more-->
+ถ้าไม่ cache เวลาเฉลี่ยจะประมาณ  6.1825 [มาจาก (8.91+6.20+4.06+5.56)/4]</p>
+
+<h2 id="section">ภาพประกอบการทดลอง</h2>
+
+<h3 id="cache-">ภาพข้างล่าง: แสดงเวลาแบบไม่ cache จ้า</h3>
+<div class="thumbnail"><a href="http://skitch.com/nazt/rtmth/getcctvimg-400x300-8.92-nocache"><img style="max-width: 638px;" src="http://img.skitch.com/20110223-a4uce619q8we8wubwtaq54emn.medium.jpg" alt="getcctvimg (400ճ00) 8.92 nocache" /></a></div>
+<p>### ภาพข้างล่าง: แสดงเวลาแบบ cache จ้า
+&lt;div class=&#8221;thumbnail&#8221;&gt;<a href="http://skitch.com/nazt/rtmp6/getcctvimg-400x300-2.49-cache"><img style="max-width: 638px;" src="http://img.skitch.com/20110223-xcs37ejaip1k4kipr4h5imm626.medium.jpg" alt="getcctvimg (400ճ00) 2.49 cache" /></a>&lt;/div&gt;</p>
+
+<h2 id="api--cache">api ที่มี cache</h2>
+<ul>
+  <li>getcctv – 5 นาที</li>
+  <li>getcctvimg – 5 นาที</li>
+</ul>
+
+<h2 id="section-1">ข้อยกเว้น</h2>
+<ul>
+  <li>ไม่ cache ข้อมูลชนิด ?&amp;format=js</li>
+  <li>ไม่ใช้ cache เมื่อมี ?&amp;nocache=1</li>
+</ul>
+
+<h2 id="section-2">ทดลองใช้</h2>
+<ul>
+  <li>แบบมี  cache</li>
+</ul>
+
+<blockquote>
+  <p><a href="http://www.together.in.th/drupal/traffy/wrapper/getcctvimg?format=jpeg&amp;id=268&amp;header=jpeg">http://www.together.in.th/drupal/traffy/wrapper/getcctvimg?format=jpeg&amp;id=268&amp;header=jpeg</a></p>
+</blockquote>
+
+<ul>
+  <li>แบบไม่เอา  cache</li>
+</ul>
+
+<blockquote>
+  <p><a href="http://www.together.in.th/drupal/traffy/wrapper/getcctvimg?format=jpeg&amp;id=268&amp;header=jpeg&amp;nocache=1">http://www.together.in.th/drupal/traffy/wrapper/getcctvimg?format=jpeg&amp;id=268&amp;header=jpeg&amp;nocache=1</a></p>
+</blockquote>
+]]></content>
+  </entry>
+  
+</feed>
